@@ -1,0 +1,5 @@
+<% unless logged_in? %>
+  <%= render 'before_login_toppage' %>
+<% else %>
+  <%= render 'after_login_toppage' %>
+<% end %>

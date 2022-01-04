@@ -1,0 +1,30 @@
+<div class="row text-center justify-content-center">
+  <h1 class="my-3">収支詳細</h1>
+ 
+  <div class="col-sm-12 col-md-6">
+    <table class="table table-bordered table-striped">
+      <tr>
+        <th><%= @expense.expense_type_i18n %></td>
+        <td><%= @expense.name %></td>
+      </tr>
+      <tr>
+        <th>金額</td>
+        <td><%= @expense.amount %>円</td>
+      </tr>
+      <tr>
+        <th>日付</td>
+        <td><%= "#{@expense.date.month}月#{@expense.date.day}日" %></td>
+      </tr>
+      <tr>
+        <th>メモ</td>
+        <td><%= @expense.memo %></td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="d-flex justify-content-center">
+    <%= link_to '収支一覧', expenses_path, class: 'btn btn-outline-secondary' %>
+    <%= link_to '編集', edit_expense_path(@expense), class: 'btn btn-primary mx-3' %>
+    <%= link_to '削除', expense_path(@expense), method: :delete, data: {confirm: "削除してよろしいですか？"}, class: 'btn btn-danger' %>
+  </div>
+</div>

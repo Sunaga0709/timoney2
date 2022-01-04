@@ -1,0 +1,10 @@
+<div class="row justify-content-center align-items-center">
+  <h1 class="text-center mt-3 mb-1">予定編集</h1>
+  <%= render 'form_schedule', schedule: @schedule %>
+</div>
+
+<div class="row justify-content-center align-items-center">
+  <div class="col-sm-5">
+    <%= link_to '戻る', schedule_path(@schedule), class: 'mt-2 btn btn-outline-secondary w-100' %>
+  </div>
+</div>

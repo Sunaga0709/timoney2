@@ -1,0 +1,42 @@
+<div class="simple-calendar">
+  <div class="mt-2 pt-2 mb-1">
+    <div class="calendar-heading d-flex justify-content-around">
+      <div>
+        <%= link_to t('simple_calendar.previous', default: '前月'), calendar.url_for_previous_view, class: 'btn btn-sm btn-outline-primary' %>
+        <%= link_to t('simple_calendar.next', default: '翌月'), calendar.url_for_next_view, class: 'btn btn-sm btn-outline-primary' %>
+      </div>
+      
+      <div>
+        <h3 class="calendar-title ms-1"><%= "#{start_date.year}年#{start_date.month}月 予定" %></h3>
+      </div> 
+      
+      <div>
+        <div>
+          <%= link_to '予定登録', new_schedule_path, class: 'btn btn-sm btn-outline-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="table">
+    <tr class="table-primary">
+      <% date_range.slice(0, 7).each do |day| %>
+        <th><%= t('date.abbr_day_names')[day.wday] %></th>
+      <% end %>
+    </tr>
+
+    <% date_range.each_slice(7) do |week| %>
+      <tr>
+        <% week.each do |day| %>
+          <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+            <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+              <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+            <% else %>
+              <% passed_block.call day, sorted_events.fetch(day, []) %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

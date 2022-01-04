@@ -1,0 +1,46 @@
+<div class="col-sm-5">
+  <%= render 'layouts/error_messages', object: schedule %>
+
+  <%= form_with model: schedule do |f| %>
+    <div class="mb-2">
+      <%= f.label '予定名' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    
+    <% if current_page?(new_schedule_path) %>
+      <div class="mb-2">
+        <%= f.label '開始日' %>
+        <%= f.datetime_field :start_at, value: Time.current.strftime("%Y-%m-%dT%H:00:00"), class: 'w-100' %>
+      </div>
+        
+      <div class="mb-2">
+        <%= f.label '終了日' %>
+        <%= f.datetime_field :end_at, value: Time.current.strftime("%Y-%m-%dT%H:00:00"), class: 'w-100' %>
+      </div>
+    <% else %>
+      <div class="mb-2">
+        <%= f.label '開始日' %>
+        <%= f.datetime_field :start_at, class: 'w-100' %>
+      </div>
+        
+      <div class="mb-2">
+        <%= f.label '終了日' %>
+        <%= f.datetime_field :end_at, class: 'w-100' %>
+      </div>
+    <% end %>
+    
+    <div class="mb-1">
+      <%= f.label '勤務先' %>
+      <%= f.collection_select :work_id, current_user.works.all, :id, :name, {prompt: '勤務先を選択'}, {class: 'form-control w-100'} %>
+      <%= f.label '勤務先を登録すると選択できます', class: 'text-success pb-0' %>
+    </div>
+  
+    <div class="mb-3">
+      <%= f.label 'メモ' %>
+      <%= f.text_area :memo, class: 'form-control' %>
+    </div>
+        
+    <%= f.submit '登録', class: 'btn btn-primary w-100' %>
+      
+  <% end %>
+</div>

@@ -1,0 +1,16 @@
+<div class="text-center">
+  <h2 class="display-3 mt-5 mb-1">ようこそ、Timoneyへ</h2>
+  <p>Timoneyは収支、スケジュール管理できるアプリです。</p>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-sm-5 text-center">
+    <%= image_tag 'Payment_Information-bro.svg', alt: '', size: '200x200' %>
+    <%= link_to 'ログイン', login_path, class: 'btn btn-primary w-100 mb-1' %>
+    
+    <h5 class="my-3">初めてご利用の方</h5>
+    <%= link_to 'ユーザ登録', signup_path, class: 'btn btn-primary w-100' %>
+    <%= link_to 'お試しログイン', trial_login_path, method: :post, class: 'btn btn-primary w-100 mt-3' %>
+    <p class="text-danger">お試しログインで作成された情報はあなた以外の方からも閲覧、編集できます。</p>
+  </div>
+</div>

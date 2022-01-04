@@ -1,0 +1,30 @@
+<div class="col-sm-5">
+  <%= render 'layouts/error_messages', object: work %>
+
+  <%= form_with model: work do |f| %>
+    <div class="mb-2">
+      <%= f.label '会社名' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    
+    <div class="mb-2">
+      <%= f.label '給与' %>
+      <%= f.number_field :wage, step: 1, min: 1, class: 'form-control' %>
+      <div>
+        <%= f.radio_button :wage_type, :wage_hourly, checked: true %>時給
+        <%= f.radio_button :wage_type, :wage_daily %>日給
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <%= f.label '交通費' %>
+      <%= f.number_field :carfare, step: 1, min: 0, class: 'form-control' %>
+      <div>
+        <%= f.radio_button :carfare_type, :carfare_daily, checked: true %>日額
+        <%= f.radio_button :carfare_type, :carfare_monthly %>月額
+      </div>
+    </div>
+      
+    <%= f.submit '登録', class: 'btn btn-primary w-100' %>
+  <% end %>
+</div>

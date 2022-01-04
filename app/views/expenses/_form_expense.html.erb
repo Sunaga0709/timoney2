@@ -1,0 +1,32 @@
+<div class="col-sm-5">
+  <%= render 'layouts/error_messages', object: expense %>
+
+  <%= form_with model: expense do |f| %>
+  <div class="mb-2">
+    <%= f.label '収支名' %>
+    <%= f.text_field :name, class: 'form-control' %>
+    <div>
+      <%= f.radio_button :expense_type, :outgo, checked: true %>支出
+      <%= f.radio_button :expense_type, :income %>収入
+    </div>
+  </div>
+    
+  <div class="mb-2">
+    <%= f.label '金額' %>
+    <%= f.number_field :amount, step: 1, min: 1, class: 'form-control' %>
+  </div>
+  
+  <div class="mb-2">
+    <%= f.label '日付', class: 'd-block' %>
+    <%= f.date_field :date, class: 'd-block w-100' %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label 'メモ' %>
+    <%= f.text_area :memo, class: 'form-control' %>
+  </div>
+      
+  <%= f.submit '登録', class: 'btn btn-primary w-100' %>
+      
+  <% end %>
+</div>
