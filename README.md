@@ -5,4 +5,3 @@ Version<br>
 
 URL
 http://timoney19980709.herokuapp.com
-https://www.re-quest2.jp/login.html?login=staff
